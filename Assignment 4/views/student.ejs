@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <main class="col-md-12">
+                <h2><%= student.firstName %> <%= student.lastName %> - Student: <%= student.studentNum %></h2>
+                <hr />
+
+                <form method="post" action="/student/update">
+                    <input type="hidden" name="studentNum" value="<%= student.studentNum %>" />
+
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>First Name:</label>
+                                    <input class="form-control" name="firstName" type="text" value="<%= student.firstName %>" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Last Name:</label>
+                                    <input class="form-control" name="lastName" type="text" value="<%= student.lastName %>" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email:</label>
+                                    <input class="form-control" name="email" type="email" value="<%= student.email %>" required />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Address Information</legend>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Street Address:</label>
+                                    <input class="form-control" name="addressStreet" type="text" value="<%= student.addressStreet %>" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>City:</label>
+                                    <input class="form-control" name="addressCity" type="text" value="<%= student.addressCity %>" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Province:</label>
+                                    <input class="form-control" name="addressProvince" type="text" value="<%= student.addressProvince %>" />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Academic Information</legend>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="TA" id="taCheck" <%= student.TA ? 'checked' : '' %>>
+                                    <label class="form-check-label" for="taCheck">Teaching Assistant</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Status:</label><br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="status" id="fullTime" value="Full Time" <%= student.status === 'Full Time' ? 'checked' : '' %>>
+                                        <label class="form-check-label" for="fullTime">Full Time</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="status" id="partTime" value="Part Time" <%= student.status === 'Part Time' ? 'checked' : '' %>>
+                                        <label class="form-check-label" for="partTime">Part Time</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Course:</label>
+                                    <select class="form-control" name="course">
+                                        <% for(let i = 1; i <= 11; i++) { %>
+                                            <option value="<%= i %>" <%= student.course == i ? 'selected' : '' %>>Course <%= i %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <hr />
+
+                    <input type="submit" class="btn btn-primary float-right" value="Update Student" />
+                    <a href="/students" class="btn btn-secondary">Cancel</a>
+                    <br /><br /><br />
+                </form>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
