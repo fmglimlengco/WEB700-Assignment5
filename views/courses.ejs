@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-12">
+    <br>
+    <h2>Courses</h2>
+    <hr />
+    <% if (courses && courses.length > 0) { %>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Course Code</th>
+              <th>Course Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% courses.forEach(function(course) { %>
+              <tr>
+                <td><a href="/course/<%= course.courseId %>"><%= course.courseCode %></a></td>
+                <td><a href="/students?course=<%= course.courseId %>"><%= course.courseDescription %></a></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    <% } else { %>
+      <div class="col-md-12 text-center">
+        <strong><%= message %></strong>
+      </div>
+    <% } %>
+  </div>
+</div>
