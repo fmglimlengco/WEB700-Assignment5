@@ -6,7 +6,7 @@
 * 
 *  Name: Frances Limlengco Student ID: 180927238 Date: 03/26/2025
 *
-*  Online (Vercel) Link: [Your Vercel Link Here]
+*  Online (Vercel) Link: https://web-700-assignment5-git-main-frances-limlengcos-projects.vercel.app
 ********************************************************************************/ 
 
 const ejs = require('ejs'); 
